@@ -1,9 +1,16 @@
 import {FormWrap, Button, Input} from './formElements';
-import {useState} from "react";
+import {useState, useEffect} from "react";
 
 function Form({list, setList}) {
 
     const [input, setInput] = useState('');
+
+    useEffect(() => {
+        localStorage.setItem('tasks',
+            JSON.stringify(
+                list
+            ))
+    }, [list])
 
     const handleChange = e => {
         setInput(e.target.value);
@@ -23,10 +30,10 @@ function Form({list, setList}) {
             done: false
         }
 
-        localStorage.setItem('tasks',
-            JSON.stringify(
-                [...list, task]
-            ))
+        // localStorage.setItem('tasks',
+        // JSON.stringify(
+        // [...list, task]
+        // ))
 
         setList([...list, task]);
 

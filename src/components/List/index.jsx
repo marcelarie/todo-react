@@ -13,11 +13,6 @@ function List({list, setList}) {
         })
 
         setList(finishedList);
-
-        localStorage.setItem('tasks',
-            JSON.stringify(
-                finishedList
-            ))
     }
 
     const deleteTask = id => {
