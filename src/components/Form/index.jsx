@@ -1,5 +1,4 @@
-// import React, {useState} from "react"
-
+import {FormWrap, Button, Input} from './formElements';
 import {useState} from "react";
 
 function Form({list, setList}) {
@@ -20,7 +19,8 @@ function Form({list, setList}) {
 
         const task = {
             id: list.length + 1,
-            task: input
+            task: input,
+            done: false
         }
 
         localStorage.setItem('tasks',
@@ -34,21 +34,14 @@ function Form({list, setList}) {
     }
 
     return (
-        <form onSubmit={handleSubmit} className="Form">
-            <input onChange={handleChange}
+        <FormWrap onSubmit={handleSubmit} className="Form">
+            <Input onChange={handleChange}
                 value={input}
                 placeholder="New task..."
-            ></input>
-            <button style={componentStyle}>Add</button>
-        </form>
+            ></Input>
+            <Button>Add</Button>
+        </FormWrap>
     )
-}
-
-const componentStyle = {
-    backgroundColor: 'red',
-    color: 'white',
-    fontSize: '1.1em',
-    border: '1px solid black'
 }
 
 export default Form
